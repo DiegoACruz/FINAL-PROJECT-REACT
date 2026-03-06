@@ -1,86 +1,53 @@
-/* ============================= */
-/* LANDING PAGE                  */
-/* ============================= */
+// Importamos React para poder crear el componente
+import React from "react";
 
-/* Contenedor principal de la página de inicio */
-.landing-container {
+// Importamos Link para navegar a otras páginas
+import { Link } from "react-router-dom";
 
-  /* Ocupa toda la altura de la pantalla */
-  height: 100vh;
 
-  /* Imagen de fondo de la tienda */
-  background-image: url("https://images.unsplash.com/photo-1466692476868-aef1dfb1e735");
+// Componente de la página principal (Landing Page)
+function LandingPage() {
 
-  /* Hace que la imagen cubra toda la pantalla */
-  background-size: cover;
+  return (
 
-  /* Centra la imagen */
-  background-position: center;
+    // Contenedor principal de la landing page
+    <div className="landing-container">
 
-  /* Evita que la imagen se repita */
-  background-repeat: no-repeat;
+      {/* Capa oscura sobre la imagen */}
+      <div className="landing-overlay">
 
-}
+        {/* Contenido central */}
+        <div className="landing-content">
 
-/* Capa oscura sobre la imagen para que el texto sea legible */
-.landing-overlay {
+          {/* Título principal */}
+          <h1>Paradise Nursery</h1>
 
-  height: 100%;
+          {/* Texto descriptivo */}
+          <p>
+            Discover beautiful plants that bring life and freshness
+            to your home.
+          </p>
 
-  /* Oscurece ligeramente la imagen */
-  background-color: rgba(0,0,0,0.45);
+          {/* Botón que lleva a la página de productos */}
+          <Link to="/products">
 
-  display: flex;
+            <button className="start-btn">
 
-  justify-content: center;
+              Shop Plants
 
-  align-items: center;
+            </button>
 
-}
+          </Link>
 
-/* Contenido central de la landing */
-.landing-content {
+        </div>
 
-  text-align: center;
+      </div>
 
-  color: white;
+    </div>
 
-  max-width: 500px;
-
-}
-
-/* Título principal */
-.landing-content h1 {
-
-  font-size: 48px;
-
-  margin-bottom: 20px;
+  );
 
 }
 
-/* Texto descriptivo */
-.landing-content p {
-
-  font-size: 18px;
-
-  margin-bottom: 30px;
-
-}
-
-/* Botón para entrar a la tienda */
-.start-btn {
-
-  font-size: 16px;
-
-  padding: 12px 25px;
-
-  background-color: #43a047;
-
-}
-
-/* Efecto hover del botón */
-.start-btn:hover {
-
-  background-color: #2e7d32;
-
-}
+// Exportamos el componente para poder usarlo en App.js
+export default LandingPage;
