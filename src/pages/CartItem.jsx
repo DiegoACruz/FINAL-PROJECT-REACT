@@ -1,64 +1,23 @@
-// Importamos React para poder crear el componente
+// Importamos React
 import React from "react";
 
-// Creamos el componente CartItem
-// Este componente representa UNA planta dentro del carrito
-function CartItem({ item, increaseQuantity, decreaseQuantity, removeFromCart }) {
+// Componente del carrito de compras
+function CartItem() {
 
-  // Retornamos la interfaz visual del producto dentro del carrito
   return (
 
-    // Tarjeta del producto en el carrito
-    <div className="cart-item">
+    <div>
 
-      {/* Imagen de la planta */}
-      <img
-        src={item.image} // URL de la imagen
-        alt={item.name} // Texto alternativo para accesibilidad
-        style={{ width: "120px", borderRadius: "10px" }} // estilo simple
-      />
+      {/* Título de la página */}
+      <h1>Your Shopping Cart</h1>
 
-      {/* Nombre de la planta */}
-      <h3>{item.name}</h3>
-
-      {/* Precio unitario */}
-      <p>Price: ${item.price}</p>
-
-      {/* Controles para cambiar la cantidad */}
-      <div className="quantity-controls">
-
-        {/* Botón para disminuir cantidad */}
-        <button onClick={() => decreaseQuantity(item.id)}>
-          -
-        </button>
-
-        {/* Cantidad actual */}
-        <span>{item.quantity}</span>
-
-        {/* Botón para aumentar cantidad */}
-        <button onClick={() => increaseQuantity(item.id)}>
-          +
-        </button>
-
-      </div>
-
-      {/* Subtotal de este producto */}
-      <p>
-        Subtotal: ${item.price * item.quantity}
-      </p>
-
-      {/* Botón para eliminar el producto del carrito */}
-      <button
-        className="remove-btn"
-        onClick={() => removeFromCart(item.id)}
-      >
-        Remove
-      </button>
+      {/* Mensaje temporal si no hay productos */}
+      <p>Your cart is currently empty.</p>
 
     </div>
 
   );
 }
 
-// Exportamos el componente para usarlo en CartSlice.jsx
+// Exportamos el componente
 export default CartItem;

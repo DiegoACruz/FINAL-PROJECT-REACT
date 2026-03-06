@@ -1,44 +1,35 @@
 // Importamos React
-import React, { useContext } from "react";
+import React from "react";
 
-// Importamos Link para navegar entre páginas
+// Importamos Link para navegar entre páginas sin recargar
 import { Link } from "react-router-dom";
-
-// Importamos el contexto del carrito
-import { CartContext } from "../context/CartContext";
 
 // Componente Navbar
 function Navbar() {
 
-  // Obtenemos el carrito del contexto
-  const { cart } = useContext(CartContext);
-
-  // Calculamos cuántos productos hay en el carrito
-  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-
   return (
-    <nav className="navbar">
 
-      {/* Logo o nombre de la tienda */}
-      <h2 className="logo">
-        <Link to="/">Paradise Nursery</Link>
-      </h2>
+    <nav>
 
-      {/* Enlaces de navegación */}
-      <div className="nav-links">
+      {/* Enlace a la página principal */}
+      <Link to="/">
+        Home
+      </Link>
 
-        {/* Ir a productos */}
-        <Link to="/products">Plants</Link>
+      {/* Enlace a la página de productos */}
+      <Link to="/products">
+        Products
+      </Link>
 
-        {/* Ir al carrito */}
-        <Link to="/cart" className="cart-link">
-          Cart 🛒 ({cartCount})
-        </Link>
-
-      </div>
+      {/* Enlace al carrito */}
+      <Link to="/cart">
+        Cart
+      </Link>
 
     </nav>
+
   );
 }
 
+// Exportamos el componente
 export default Navbar;
