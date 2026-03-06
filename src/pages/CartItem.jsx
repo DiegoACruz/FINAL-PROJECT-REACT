@@ -1,23 +1,33 @@
-// Importamos React
 import React from "react";
+import { useSelector } from "react-redux";
 
-// Componente del carrito de compras
 function CartItem() {
+
+  // Accedemos a los productos del carrito
+  const items = useSelector(state => state.cart.items);
 
   return (
 
     <div>
 
-      {/* Título de la página */}
       <h1>Your Shopping Cart</h1>
 
-      {/* Mensaje temporal si no hay productos */}
-      <p>Your cart is currently empty.</p>
+      {/* Si el carrito está vacío */}
+      {items.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+
+        items.map((item, index) => (
+          <div key={index}>
+            <p>{item.name}</p>
+          </div>
+        ))
+
+      )}
 
     </div>
 
   );
 }
 
-// Exportamos el componente
 export default CartItem;

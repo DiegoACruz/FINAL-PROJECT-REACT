@@ -1,24 +1,27 @@
 // Importamos React
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// Importamos la app principal
-import App from './App';
+// Importamos Provider de Redux
+import { Provider } from "react-redux";
 
-// Importamos estilos globales
-import './index.css';
+// Importamos el store
+import store from "./pages/CartSlice";
 
-// Importamos el CartProvider para envolver la app
-import { CartProvider } from './context/CartContext';
+// Importamos App
+import App from "./App";
 
-// Creamos la raíz
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Creamos la raíz de React
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// Renderizamos la app
+// Renderizamos la aplicación
 root.render(
   <React.StrictMode>
-    <CartProvider>
+
+    {/* Provider permite que Redux funcione en toda la app */}
+    <Provider store={store}>
       <App />
-    </CartProvider>
+    </Provider>
+
   </React.StrictMode>
 );
