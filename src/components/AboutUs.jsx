@@ -1,23 +1,53 @@
+// Importamos React para poder crear el componente
 import React from "react";
 
+// Creamos el componente AboutUs
 function AboutUs() {
+
+  // Este componente muestra información sobre la empresa Paradise Nursery
   return (
-    <div className="aboutus-container" style={{ padding: "2rem", textAlign: "center" }}>
+
+    // Contenedor principal de la página
+    <div
+      className="aboutus-container"
+      style={{
+        padding: "2rem",      // Espacio interno
+        textAlign: "center",  // Centrar el texto
+        maxWidth: "900px",    // Ancho máximo del contenido
+        margin: "auto"        // Centrar el contenedor
+      }}
+    >
+
+      {/* Título principal */}
       <h1>About Paradise Nursery</h1>
+
+      {/* Primer párrafo de descripción */}
       <p>
-        Welcome to <strong>Paradise Nursery</strong>! We are dedicated to bringing
-        the beauty of nature into your home. Our company specializes in selling
-        a wide variety of plants for indoor spaces, ensuring that every home can
-        enjoy a touch of greenery.
+        Welcome to <strong>Paradise Nursery</strong>, an online plant shop
+        dedicated to bringing the beauty of nature into your home.
+        Our mission is to make it easy for people to discover and
+        enjoy plants that improve their living spaces.
       </p>
+
+      {/* Segundo párrafo */}
       <p>
-        From lush indoor plants to charming succulents and flowering plants, our
-        collection is carefully selected to provide quality and beauty. At
-        Paradise Nursery, we believe that plants not only enhance your space but
-        also improve your well-being and happiness.
+        We specialize in a variety of plants including indoor plants,
+        succulents, and flowering plants. Each plant in our store is
+        carefully selected to ensure quality, beauty, and long-lasting
+        enjoyment for our customers.
       </p>
+
+      {/* Tercer párrafo */}
+      <p>
+        At Paradise Nursery we believe that plants do more than
+        decorate a room. They help create a healthier environment,
+        reduce stress, and bring a sense of calm and happiness to
+        everyday life.
+      </p>
+
     </div>
   );
 }
 
+// Exportamos el componente para poder usarlo en otras partes de la aplicación
 export default AboutUs;
