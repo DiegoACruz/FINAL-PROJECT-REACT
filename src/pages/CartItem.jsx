@@ -13,7 +13,7 @@ function CartItem() {
 
   return (
 
-    <div style={{ padding: "30px" }}>
+    <div className="cart-container">
 
       <h1>Your Shopping Cart</h1>
 
@@ -27,45 +27,37 @@ function CartItem() {
 
           {cart.map(item => (
 
-            <div
-              key={item.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "20px",
-                marginBottom: "20px",
-                background: "white",
-                padding: "15px",
-                borderRadius: "10px"
-              }}
-            >
+            <div className="cart-item" key={item.id}>
 
               <img
                 src={item.image}
                 alt={item.name}
-                width="100"
               />
 
-              <div>
+              <div className="cart-info">
 
                 <h3>{item.name}</h3>
 
-                <p>${item.price}</p>
+                <p>Price: ${item.price}</p>
 
-                <div>
+                <div className="quantity-controls">
 
-                  <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                  <button onClick={() => decreaseQuantity(item.id)}>
+                    -
+                  </button>
 
-                  <span style={{ margin: "10px" }}>
-                    {item.quantity}
-                  </span>
+                  <span>{item.quantity}</span>
 
-                  <button onClick={() => increaseQuantity(item.id)}>+</button>
+                  <button onClick={() => increaseQuantity(item.id)}>
+                    +
+                  </button>
 
                 </div>
 
+                <p>Subtotal: ${item.price * item.quantity}</p>
+
                 <button
-                  style={{ marginTop: "10px", background: "red" }}
+                  className="remove-btn"
                   onClick={() => removeFromCart(item.id)}
                 >
                   Remove
@@ -77,7 +69,9 @@ function CartItem() {
 
           ))}
 
-          <h2>Total: ${getTotal()}</h2>
+          <h2 className="cart-total">
+            Total: ${getTotal()}
+          </h2>
 
         </>
 
