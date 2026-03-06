@@ -1,35 +1,32 @@
-// Importamos React
 import React from "react";
-
-// Importamos Link para navegar entre páginas sin recargar
 import { Link } from "react-router-dom";
 
-// Componente Navbar
 function Navbar() {
 
   return (
 
-    <nav>
+    <nav className="navbar">
 
-      {/* Enlace a la página principal */}
-      <Link to="/">
-        Home
-      </Link>
+      <div className="logo">
+        <Link to="/">
+          <h2>Paradise Nursery</h2>
+        </Link>
+      </div>
 
-      {/* Enlace a la página de productos */}
-      <Link to="/products">
-        Products
-      </Link>
+      <div className="nav-links">
 
-      {/* Enlace al carrito */}
-      <Link to="/cart">
-        Cart
-      </Link>
+        <Link to="/">Home</Link>
+
+        <Link to="/products">Plants</Link>
+
+        <Link to="/cart">Cart</Link>
+
+      </div>
 
     </nav>
 
   );
+
 }
 
-// Exportamos el componente
 export default Navbar;

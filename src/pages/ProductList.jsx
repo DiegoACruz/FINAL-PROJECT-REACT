@@ -1,36 +1,70 @@
-// Importamos React
-import React from "react";
-
-// Importamos los datos de las plantas
+import React, { useContext } from "react";
 import plants from "../data/plantsData";
+import { CartContext } from "../context/CartContext";
 
-// Componente que muestra la lista de productos
 function ProductList() {
+
+  const { cart, addToCart } = useContext(CartContext);
+
+  const isInCart = (id) => {
+    return cart.some(item => item.id === id);
+  };
 
   return (
 
-    <div>
+    <div style={{ padding: "30px" }}>
 
-      {/* Título de la página */}
       <h1>Our Plants</h1>
 
-      {/* Recorremos el arreglo de plantas */}
-      {plants.map((plant) => (
+      {["Indoor Plants", "Succulents", "Flowering Plants"].map(category => (
 
-        <div key={plant.id}>
+        <div key={category}>
 
-          {/* Nombre de la planta */}
-          <h2>{plant.name}</h2>
+          <h2>{category}</h2>
 
-          {/* Imagen de la planta */}
-          <img
-            src={plant.image}
-            alt={plant.name}
-            width="200"
-          />
+          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
 
-          {/* Precio */}
-          <p>${plant.price}</p>
+            {plants
+              .filter(plant => plant.category === category)
+              .map(plant => (
+
+                <div
+                  key={plant.id}
+                  style={{
+                    border: "1px solid #ddd",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    width: "220px",
+                    textAlign: "center",
+                    background: "white"
+                  }}
+                >
+
+                  <img
+                    src={plant.image}
+                    alt={plant.name}
+                    width="200"
+                    style={{ borderRadius: "10px" }}
+                  />
+
+                  <h3>{plant.name}</h3>
+
+                  <p>${plant.price}</p>
+
+                  <button
+                    disabled={isInCart(plant.id)}
+                    onClick={() => addToCart(plant)}
+                  >
+
+                    {isInCart(plant.id) ? "Added" : "Add to Cart"}
+
+                  </button>
+
+                </div>
+
+              ))}
+
+          </div>
 
         </div>
 
@@ -39,7 +73,7 @@ function ProductList() {
     </div>
 
   );
+
 }
 
-// Exportamos el componente
 export default ProductList;
