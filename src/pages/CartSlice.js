@@ -1,41 +1,110 @@
-// Importamos createSlice de Redux Toolkit
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+// Importamos React
+import React, { useContext } from "react";
 
-// Estado inicial del carrito
-const initialState = {
-  items: []
-};
+// Importamos el contexto del carrito
+import { CartContext } from "../context/CartContext";
 
-// Creamos el slice del carrito
-const cartSlice = createSlice({
-  name: "cart",
-  initialState,
-  reducers: {
+// Creamos el componente Cart
+function Cart() {
 
-    // Agregar producto
-    addItem: (state, action) => {
-      state.items.push(action.payload);
-    },
+  // Obtenemos el carrito y las funciones del contexto
+  const { cart, increaseQuantity, decreaseQuantity, removeFromCart, getTotal } = useContext(CartContext);
 
-    // Eliminar producto
-    removeItem: (state, action) => {
-      state.items = state.items.filter(
-        item => item.id !== action.payload
-      );
-    }
+  return (
 
-  }
-});
+    // Contenedor principal del carrito
+    <div className="cart-container">
 
-// Exportamos acciones
-export const { addItem, removeItem } = cartSlice.actions;
+      {/* Título */}
+      <h1>Your Cart</h1>
 
-// Creamos el store
-const store = configureStore({
-  reducer: {
-    cart: cartSlice.reducer
-  }
-});
+      {/* Si el carrito está vacío */}
+      {cart.length === 0 ? (
 
-// Exportamos el store
-export default store;
+        <p>Your cart is empty.</p>
+
+      ) : (
+
+        <>
+          {/* Contenedor de productos */}
+          <div className="cart-items">
+
+            {/* Recorremos todos los productos */}
+            {cart.map((item) => {
+
+              // Si por algún error item no existe lo ignoramos
+              if (!item) return null;
+
+              return (
+
+                // Tarjeta del producto
+                <div className="cart-item" key={item.id}>
+
+                  {/* Imagen del producto */}
+                  {/* Solo se muestra si existe */}
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      style={{ width: "120px", borderRadius: "8px" }}
+                    />
+                  )}
+
+                  {/* Nombre */}
+                  <h3>{item.name}</h3>
+
+                  {/* Precio */}
+                  <p>Price: ${item.price}</p>
+
+                  {/* Controles de cantidad */}
+                  <div className="quantity-controls">
+
+                    {/* Botón disminuir */}
+                    <button onClick={() => decreaseQuantity(item.id)}>
+                      -
+                    </button>
+
+                    {/* Cantidad */}
+                    <span>{item.quantity}</span>
+
+                    {/* Botón aumentar */}
+                    <button onClick={() => increaseQuantity(item.id)}>
+                      +
+                    </button>
+
+                  </div>
+
+                  {/* Subtotal */}
+                  <p>Subtotal: ${item.price * item.quantity}</p>
+
+                  {/* Botón eliminar */}
+                  <button
+                    className="remove-btn"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    Remove
+                  </button>
+
+                </div>
+
+              );
+
+            })}
+
+          </div>
+
+          {/* Total */}
+          <h2>Total: ${getTotal()}</h2>
+
+        </>
+
+      )}
+
+    </div>
+
+  );
+
+}
+
+// Exportamos el componente
+export default Cart;
