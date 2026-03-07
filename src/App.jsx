@@ -1,7 +1,8 @@
-// Importamos React para crear el componente principal
+// Importamos React para crear componentes
 import React from "react";
 
-// Importamos HashRouter para manejar las rutas (necesario para GitHub Pages)
+// Importamos HashRouter para manejar rutas
+// HashRouter es necesario para que el proyecto funcione en GitHub Pages
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 // Importamos las páginas de la aplicación
@@ -16,7 +17,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 
 
-// Componente principal de la aplicación
+// Creamos el componente principal de la aplicación
 function App() {
 
   return (
@@ -24,10 +25,10 @@ function App() {
     // Router permite navegar entre páginas sin recargar el sitio
     <Router>
 
-      {/* Navbar visible en todas las páginas */}
+      {/* Navbar aparece en todas las páginas */}
       <Navbar />
 
-      {/* Definición de las rutas de la aplicación */}
+      {/* Contenedor principal del contenido */}
       <Routes>
 
         {/* Ruta de la página principal */}
@@ -56,5 +57,6 @@ function App() {
 
 }
 
-// Exportamos el componente App para usarlo en index.js
+
+// Exportamos el componente para que pueda ser usado en index.js
 export default App;

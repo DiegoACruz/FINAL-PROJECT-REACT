@@ -1,34 +1,38 @@
-// Importamos React para poder crear el componente
+// Importamos React para crear el componente
 import React from "react";
 
-// Importamos Link para navegar a otras páginas
+// Importamos Link para navegar a la página de productos
 import { Link } from "react-router-dom";
 
 
-// Componente de la página principal (Landing Page)
+// Creamos el componente LandingPage
 function LandingPage() {
 
   return (
 
-    // Contenedor principal de la landing page
+    // Contenedor principal de la portada
     <div className="landing-container">
 
-      {/* Capa oscura sobre la imagen */}
+      {/* Capa oscura encima de la imagen */}
       <div className="landing-overlay">
 
         {/* Contenido central */}
         <div className="landing-content">
 
-          {/* Título principal */}
+          {/* Nombre de la tienda */}
           <h1>Paradise Nursery</h1>
 
           {/* Texto descriptivo */}
           <p>
-            Discover beautiful plants that bring life and freshness
-            to your home.
+
+            Bring nature into your home.
+
+            Discover beautiful indoor plants, succulents, and flowering
+            plants carefully selected to brighten your living space.
+
           </p>
 
-          {/* Botón que lleva a la página de productos */}
+          {/* Botón que lleva a la tienda */}
           <Link to="/products">
 
             <button className="start-btn">
@@ -49,5 +53,6 @@ function LandingPage() {
 
 }
 
-// Exportamos el componente para poder usarlo en App.js
+
+// Exportamos el componente
 export default LandingPage;

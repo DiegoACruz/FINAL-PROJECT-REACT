@@ -1,29 +1,45 @@
-// Importamos React
+// Importamos la librería principal de React
+// React permite crear componentes y manejar la interfaz
 import React from "react";
 
-// Importamos ReactDOM
+// Importamos ReactDOM para poder renderizar la aplicación en el navegador
 import ReactDOM from "react-dom/client";
 
-// Importamos la aplicación
+// Importamos el componente principal de la aplicación
 import App from "./App";
 
-// Importamos el proveedor del carrito
-import { CartProvider } from "./context/CartContext";
-
-// Importamos estilos
+// Importamos los estilos globales de la aplicación
 import "./index.css";
 
-// Creamos la raíz de React
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// Importamos el proveedor del carrito (CartContext)
+// Este proveedor permite que TODA la aplicación tenga acceso al carrito
+import { CartProvider } from "./context/CartContext";
+
+
+// Creamos la raíz de la aplicación dentro del elemento HTML con id="root"
+const root = ReactDOM.createRoot(
+  document.getElementById("root")
+);
+
 
 // Renderizamos la aplicación
 root.render(
 
-  // CartProvider permite que toda la aplicación use el carrito
-  <CartProvider>
+  // React.StrictMode ayuda a detectar problemas en desarrollo
+  <React.StrictMode>
 
-    <App />
+    {/* 
+      CartProvider envuelve toda la aplicación.
+      Esto permite que cualquier componente pueda usar el carrito
+      sin necesidad de pasar datos manualmente entre componentes.
+    */}
+    <CartProvider>
 
-  </CartProvider>
+      {/* Componente principal de la aplicación */}
+      <App />
+
+    </CartProvider>
+
+  </React.StrictMode>
 
 );
